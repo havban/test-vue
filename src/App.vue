@@ -12,12 +12,22 @@
 <script>
 import HeaderComp from '@/components/skeletons/HeaderComp'
 const FooterComp = () => import('@/components/skeletons/FooterComp')
+import {mapActions} from 'vuex'
 
 export default {
   name: 'App',
   components: {
     HeaderComp,
     FooterComp
+  },
+  methods: {
+    ...mapActions([
+      'getUserData'
+    ])
+  },
+  created () {
+    this.getUserData()
+    // this.$store.dispatch('getUserData')
   }
 }
 </script>

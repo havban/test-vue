@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import ContactUsPage from '@/pages/ContactUsPage'
 import ProductsPage from '@/pages/ProductsPage'
+import ProductDetailPage from '@/pages/products/ProductDetailPage'
+import ProductEditPage from '@/pages/products/ProductEditPage'
 import CategoriesPage from '@/pages/CategoriesPage'
 
 Vue.use(Router)
@@ -23,6 +25,16 @@ export default new Router({
       path: '/products',
       name: 'ProductsPage',
       component: ProductsPage
+    },
+    {
+      path: '/products/:id',
+      name: 'ProductDetailPage',
+      component: ProductDetailPage
+    },
+    {
+      path: '/products/:id/edit',
+      name: 'ProductEditPage',
+      component: ProductEditPage
     },
     {
       path: '/categories',

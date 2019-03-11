@@ -3,31 +3,27 @@
     <div>
       List of products
     </div>
-    <div v-for="i in items"
+    <ProductItem
+         :item="i"
+         v-for="i in products"
          :key="i.sku">
-      <div>
-        SKU: {{i.sku}}<br/>
-        name: {{i.name}}<br/>
-        <img width="100px" :src="i.image"/>
-      </div>
-    </div>
+    </ProductItem>
   </div>
 </template>
 
 <script type="text/javascript">
-import axios from 'axios'
-
+import ProductItem from '@/components/products/ProductItem'
+import {mapGetters} from 'vuex'
 export default {
   name: 'ProductPage',
-  data () {
-    return {
-      items: []
-    }
+  components: {
+    ProductItem
+  },
+  computed: {
+    ...mapGetters(['products'])
   },
   created () {
-    axios.get('/api/products').then((resp) => {
-      this.items = resp.data.data
-    })
+    this.$store.dispatch('getProducts')
   }
 }
 </script>
